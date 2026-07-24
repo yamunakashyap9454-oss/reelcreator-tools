@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReelCreator Tools</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#111;
+color:#fff;
+text-align:center;
+}
+
+header{
+padding:25px;
+background:#1f1f1f;
+font-size:28px;
+font-weight:bold;
+}
+
+h2{
+margin-top:20px;
+}
+
+#search{
+width:90%;
+padding:12px;
+border:none;
+border-radius:10px;
+margin:15px;
+font-size:16px;
+}
+
+.card{
+background:#222;
+margin:15px;
+padding:20px;
+border-radius:15px;
+box-shadow:0 0 15px rgba(255,0,102,0.2);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 0 25px rgba(255,0,102,0.5);
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:10px;
+background:#ff0066;
+color:white;
+font-size:18px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#ff3385;
+transform:scale(1.05);
+}
+input{
+width:90%;
+padding:14px;
+font-size:16px;
+border:none;
+border-radius:12px;
+background:#222;
+color:white;
+outline:none;
+margin:15px 0;
+}
+
+input:focus{
+box-shadow:0 0 10px #ff0066;
+}
+</style>
+</head>
+
+<body>
+
+<header style="display:flex;align-items:center;justify-content:space-between;padding:20px 25px;">
+<span style="font-size:30px;cursor:pointer;" onclick="openMenu()">☰</span>
+<span>🚀 ReelCreator Tools</span>
+<span></span>
+</header>
+<div id="sideMenu" style="height:100%;width:0;position:fixed;top:0;left:0;background:#1a1a1a;overflow-x:hidden;transition:0.4s;padding-top:60px;z-index:999;">
+
+<a href="javascript:void(0)" onclick="closeMenu()" style="position:absolute;top:15px;right:20px;font-size:35px;color:white;text-decoration:none;">×</a>
+
+<a href="index.html" style="display:block;padding:15px;color:white;text-decoration:none;">🏠 Home</a>
+
+<a href="Caption.html" style="display:block;padding:15px;color:white;text-decoration:none;">📝 Caption Generator</a>
+
+<a href="hashtag.html" style="display:block;padding:15px;color:white;text-decoration:none;">🏷️ Hashtag Generator</a>
+
+<a href="bio.html" style="display:block;padding:15px;color:white;text-decoration:none;">👤 Bio Generator</a>
+
+</div>
+<p id="toolCount" style="color:#bbb;font-size:16px;">
+Total Tools: 6
+</p>
+<div style="background:#1a1a1a;margin:15px;padding:20px;border-radius:15px;">
+<h2>👋 Welcome to ReelCreator Tools</h2>
+<p>Create amazing Instagram captions, hashtags, bios and more — all for FREE.</p>
+<button onclick="shareSite()">📤 Share Website</button>
+</div>
+
+<h2>Free Instagram Creator Tools</h2>
+
+<input
+type="text"
+id="search"
+placeholder="🔍 Search Tools...">
+
+<div class="card">
+<h3>📝 Caption Generator</h3>
+<p>Create amazing captions for your reels.</p>
+<button onclick="location.href='Caption.html'">Open</button>
+</div>
+
+<div class="card">
+<h3>🏷️ Hashtag Generator</h3>
+<p>Get trending hashtags instantly.</p>
+<button onclick="location.href='hashtag.html'">Open</button>
+</div>
+
+<div class="card">
+<h3>👤 Bio Generator</h3>
+<p>Create stylish Instagram bios.</p>
+<button onclick="location.href='bio.html'">Open</button>
+</div>
+
+<div class="card">
+<h3>👤 Username Generator</h3>
+<p>Create stylish usernames instantly.</p>
+<button onclick="location.href='username.html'">Open</button>
+</div>
+
+<div class="card">
+<h3>🎨 Font Generator</h3>
+<p>Create stylish fonts.</p>
+<button onclick="location.href='font.html'">Open</button>
+</div>
+
+<div class="card">
+<h3>⏰ Best Time to Post</h3>
+<p>Find the best Instagram posting time.</p>
+<button onclick="location.href='besttime.html'">Open</button>
+</div>
+
+<div class="card">
+<h3>🎨 Color Palette Generator</h3>
+<p>Beautiful color combinations.</p>
+<button onclick="location.href='color.html'">Open</button>
+</div>
+
+<script>
+let search = document.getElementById("search");
+
+search.addEventListener("keyup", function () {
+
+let value = search.value.toLowerCase();
+let cards = document.getElementsByClassName("card");
+
+for(let i=0;i<cards.length;i++){
+
+let text = cards[i].innerText.toLowerCase();
+
+if(text.includes(value)){
+cards[i].style.display="block";
+}else{
+cards[i].style.display="none";
+}
+
+}
+
+});
+function shareSite() {
+  if (navigator.share) {
+    navigator.share({
+      title: "ReelCreator Tools",
+      text: "Check out my free Instagram creator tools!",
+      url: window.location.href
+    });
+  } else {
+    alert("Sharing is not supported on this device.");
+  }
+}
+let totalTools = document.getElementsByClassName("card").length;
+document.getElementById("toolCount").innerText = "Total Tools: " + totalTools;
+function openMenu() {
+  document.getElementById("sideMenu").style.width = "250px";
+}
+
+function closeMenu() {
+  document.getElementById("sideMenu").style.width = "0";
+}
+</script>
+<footer style="background:#1a1a1a;padding:20px;margin-top:30px;">
+<h3>🚀 ReelCreator Tools</h3>
+<p>Made with ❤️ by Aditya Kashyap</p>
+<p>© 2026 All Rights Reserved</p>
+</footer>
+</body>
+</html>

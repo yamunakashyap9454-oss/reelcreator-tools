@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hashtag Generator</title>
+
+<style>
+body{
+background:#111;
+color:white;
+font-family:Arial,sans-serif;
+text-align:center;
+padding:20px;
+}
+input{
+width:90%;
+padding:12px;
+font-size:18px;
+border:none;
+border-radius:10px;
+margin:10px 0;
+}
+button{
+padding:12px 20px;
+font-size:18px;
+background:#ff0066;
+color:white;
+border:none;
+border-radius:10px;
+margin:10px;
+cursor:pointer;
+}
+#result{
+margin-top:20px;
+font-size:18px;
+line-height:32px;
+white-space:pre-wrap;
+}
+</style>
+</head>
+
+<body>
+
+<h2>🏷 Hashtag Generator</h2>
+
+<input id="topic" placeholder="Topic likho (Sad, Love, Nature, Motivation)">
+
+<br>
+
+<button onclick="generate()">Generate</button>
+
+<div id="result"></div>
+
+<button onclick="copyText()">📋 Copy</button>
+
+<br>
+
+<button onclick="location.href='index.html'">⬅ Back Home</button>
+
+<script>
+
+function generate(){
+
+let t=document.getElementById("topic").value.toLowerCase();
+
+let hashtags="";
+
+if(t=="sad"){
+hashtags="#sad #broken #alone #pain #heart #emotional #shayari #love #viral #reels";
+}
+else if(t=="love"){
+hashtags="#love #couple #romantic #heart #truelove #instagram #reels #viral #cute #relationship";
+}
+else if(t=="nature"){
+hashtags="#nature #sky #sunset #moon #clouds #rain #photography #beautiful #viral #reels";
+}
+else if(t=="motivation"){
+hashtags="#motivation #success #life #mindset #quotes #viral #reels #inspiration #goals #hardwork";
+}
+else{
+hashtags="#viral #reels #instagram #trending #explore #fyp #india #creator #video #reelitfeelit";
+}
+
+document.getElementById("result").innerText = hashtags;
+}
+
+function copyText(){
+let text=document.getElementById("result").innerText;
+navigator.clipboard.writeText(text);
+alert("✅ Copied Successfully!");
+}
+
+</script>
+
+</body>
+</html>

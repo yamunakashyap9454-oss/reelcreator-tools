@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Caption Generator</title>
+<style>
+body{
+background:#111;
+color:white;
+font-family:Arial;
+text-align:center;
+padding:20px;
+}
+input{
+width:90%;
+padding:12px;
+border-radius:10px;
+border:none;
+margin:10px 0;
+font-size:16px;
+}
+button{
+background:#ff0066;
+color:white;
+padding:12px 20px;
+border:none;
+border-radius:10px;
+font-size:18px;
+margin:10px;
+}
+#result{
+margin-top:20px;
+font-size:20px;
+}
+</style>
+</head>
+<body>
+
+<h1>📝 Caption Generator</h1>
+
+<input id="topic" placeholder="Topic likho (Sad, Love, Nature...)">
+
+<button onclick="generate()">Generate</button>
+
+<p id="result"></p>
+
+<button onclick="location.href='index.html'">⬅ Back Home</button>
+<button onclick="copyText()">📋 Copy</button>
+
+<script>
+function generate(){
+let t=document.getElementById("topic").value.toLowerCase();
+let text="✨ Stay real, stay you.";
+
+if(t=="sad"){
+
+let sad = [
+"🥀 Kuch dard lafzon se zyada khamoshi bayan karti hai.",
+"💔 Muskurahat ke peeche bhi dard hota hai.",
+"🌙 Raat sabse zyada uski yaad dilati hai.",
+"😔 Har kahani ka happy ending nahi hota.",
+"🖤 Dil tootne ki awaaz sirf mehsoos hoti hai."
+];
+
+text = sad[Math.floor(Math.random()*sad.length)];
+
+}
+else if(t=="love"){
+
+let love = [
+"❤️ Mohabbat wahi hai jo har din aur gehri ho.",
+"🥰 Tera saath meri duniya hai.",
+"💕 Ishq lafzon se nahi, ehsaason se hota hai.",
+"💖 Tu ho to har din khoobsurat lagta hai.",
+"😍 Dil sirf tujhe hi chahta hai."
+];
+
+text = love[Math.floor(Math.random()*love.length)];
+
+}
+else if(t=="nature"){
+text="🌿 Nature kabhi jaldi nahi karti, phir bhi sab kuch ho jata hai.";
+}
+
+document.getElementById("result").innerHTML=text;
+}
+</script>function copyText() {
+    let text = document.getElementById("result").innerText;
+
+    if (text == "") {
+        alert("Pehle Generate karo!");
+        return;
+    }
+
+    navigator.clipboard.writeText(text);
+    alert("✅ Copied Successfully!");
+}
+
+</body>
+</html>

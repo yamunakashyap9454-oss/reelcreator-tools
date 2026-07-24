@@ -1,0 +1,95 @@
+<<!DOCTYPE html>
+<html>
+<head>
+<title>Bio Generator</title>
+<style>
+body{
+background:#111;
+color:white;
+font-family:Arial;
+text-align:center;
+padding:20px;
+}
+button{
+background:#ff0066;
+color:white;
+padding:12px 20px;
+border:none;
+border-radius:10px;
+font-size:18px;
+}
+</style>
+</head>
+<body>
+
+<h1>👤 Bio Generator</h1>
+
+<input id="type" placeholder="Type likho (Attitude, VIP, Sad, Love)">
+
+<br><br>
+
+<button onclick="generateBio()">Generate</button>
+
+<p id="result"></p>
+
+<button onclick="copyText()">📋 Copy</button>
+
+<br><br>
+
+<button onclick="location.href='index.html'">⬅ Back Home</button>
+
+<script>
+function generateBio() {
+
+let t = document.getElementById("type").value.toLowerCase();
+let text = "✨ Stay Real 😎";
+
+if(t=="attitude"){
+let bio=[
+"😎 Born to Win | Dream Big 🔥",
+"💯 No Attitude, Just Personality 😈",
+"👑 King of My Own World"
+];
+text=bio[Math.floor(Math.random()*bio.length)];
+}
+
+else if(t=="vip"){
+let bio=[
+"👑 Official Account 💎",
+"✨ Living Luxury Life 😎",
+"🚀 Future Millionaire 💸"
+];
+text=bio[Math.floor(Math.random()*bio.length)];
+}
+
+else if(t=="sad"){
+let bio=[
+"🥀 Smiling Outside, Broken Inside",
+"💔 Silent Heart",
+"😔 Alone but Strong"
+];
+text=bio[Math.floor(Math.random()*bio.length)];
+}
+
+else if(t=="love"){
+let bio=[
+"❤️ Love is Life",
+"💕 One Heart One Soul",
+"😍 Forever Yours"
+];
+text=bio[Math.floor(Math.random()*bio.length)];
+}
+
+document.getElementById("result").innerHTML=text;
+}
+
+function copyText(){
+navigator.clipboard.writeText(document.getElementById("result").innerText);
+alert("✅ Copied");
+}
+</script>
+
+<button onclick="location.href='index.html'">⬅ Back Home</button>
+
+</body>
+</html>

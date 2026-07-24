@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Username Generator</title>
+
+<style>
+body{
+background:#111;
+color:white;
+font-family:Arial,sans-serif;
+text-align:center;
+padding:20px;
+}
+input{
+width:90%;
+padding:12px;
+border:none;
+border-radius:10px;
+font-size:16px;
+margin:10px 0;
+}
+button{
+padding:12px 20px;
+border:none;
+border-radius:10px;
+background:#ff0066;
+color:white;
+font-size:18px;
+margin:10px;
+cursor:pointer;
+}
+#result{
+margin-top:20px;
+font-size:20px;
+line-height:35px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>👤 Username Generator</h2>
+
+<input id="topic" placeholder="Category likho (Gaming, Sad, Love, VIP)">
+
+<br>
+
+<button onclick="generate()">Generate</button>
+
+<p id="result"></p>
+
+<button onclick="copyText()">📋 Copy</button>
+
+<br>
+
+<button onclick="location.href='index.html'">⬅ Back Home</button>
+
+<script>
+
+function copyText(){
+  let text = document.getElementById("result").innerText;
+  navigator.clipboard.writeText(text);
+  alert("✅ Copied Successfully!");
+}
+function generate(){
+
+let t=document.getElementById("topic").value.toLowerCase();
+let names=[];
+
+if(t=="gaming"){
+names=["ShadowX","DarkHunter","GhostOP","NoobSlayer","NightWolf"];
+}
+
+else if(t=="sad"){
+names=["BrokenSoul","SilentBoy","LostHeart","DarkMind","AloneKing"];
+}
+
+else if(t=="love"){
+names=["LoveBird","HeartKing","ForeverUs","CuteSoul","TrueLove"];
+}
+
+else if(t=="vip"){
+names=["RoyalBoss","KingOfficial","VIPStar","EliteBoy","LuxuryLife"];
+}
+
+else{
+  names = [
+    "TheLastPage",
+    "DarkSoul",
+    "SilentVibes",
+    "MoonLight",
+    "LostDream"
+  ];
+}
+
+document.getElementById("result").innerText =
+names[Math.floor(Math.random() * names.length)];
+}
+</script>
+
+</body>
+</html>

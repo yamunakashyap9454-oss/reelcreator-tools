@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Font Style Generator</title>
+
+<style>
+body{
+background:#111;
+color:white;
+font-family:Arial;
+padding:20px;
+text-align:center;
+}
+input{
+width:90%;
+padding:12px;
+font-size:18px;
+border-radius:10px;
+border:none;
+margin:10px 0;
+}
+button{
+padding:12px 20px;
+font-size:18px;
+background:#ff0066;
+color:white;
+border:none;
+border-radius:10px;
+margin:10px;
+}
+#result{
+margin-top:20px;
+font-size:24px;
+line-height:45px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>🎨 Font Style Generator</h2>
+
+<input id="text" placeholder="Apna naam likho">
+
+<br>
+
+<button onclick="convertFont()">Generate</button>
+
+<div id="result"></div>
+
+<button onclick="location.href='index.html'">⬅ Back Home</button>
+
+<script>
+function generate(){
+
+let t = document.getElementById("text").value.toLowerCase();
+
+document.getElementById("result").innerHTML=
+"𝐁𝐨𝐥𝐝: "+t+"<br><br>"+
+"𝘐𝘵𝘢𝘭𝘪𝘤: "+t+"<br><br>"+
+"`"+t+"`";
+
+}
+
+function convertFont(){
+let t = document.getElementById("text").value;
+
+let fancy =
+t.replace(/a/g,"𝖆")
+.replace(/b/g,"𝖇")
+.replace(/c/g,"𝖈")
+.replace(/d/g,"𝖉")
+.replace(/e/g,"𝖊")
+.replace(/f/g,"𝖋")
+.replace(/g/g,"𝖌")
+.replace(/h/g,"𝖍")
+.replace(/i/g,"𝖎")
+.replace(/j/g,"𝖏")
+.replace(/k/g,"𝖐")
+.replace(/l/g,"𝖑")
+.replace(/m/g,"𝖒")
+.replace(/n/g,"𝖓")
+.replace(/o/g,"𝖔")
+.replace(/p/g,"𝖕")
+.replace(/q/g,"𝖖")
+.replace(/r/g,"𝖗")
+.replace(/s/g,"𝖘")
+.replace(/t/g,"𝖙")
+.replace(/u/g,"𝖚")
+.replace(/v/g,"𝖛")
+.replace(/w/g,"𝖜")
+.replace(/x/g,"𝖝")
+.replace(/y/g,"𝖞")
+.replace(/z/g,"𝖟");
+
+document.getElementById("result").innerText = fancy;
+}
+
+function copyFont(){
+navigator.clipboard.writeText(
+document.getElementById("result").innerText
+);
+alert("✅ Copied!");
+}
+</script>
+
+</body>
+</html>
