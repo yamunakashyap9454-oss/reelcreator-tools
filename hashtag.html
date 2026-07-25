@@ -1,513 +1,211 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Hashtag Generator - ReelCreator Tools</title>
+<title>Hashtag Generator</title>
 
 <style>
-
-*{
-box-sizing:border-box;
-}
-
 body{
-margin:0;
-font-family:Arial,sans-serif;
 background:#111;
-color:#fff;
+color:white;
+font-family:Arial,sans-serif;
 text-align:center;
-transition:0.3s;
+padding:20px;
 }
-
-header{
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:20px 25px;
-background:#1f1f1f;
-font-size:20px;
-font-weight:bold;
-}
-
-.menuBtn{
-font-size:30px;
-cursor:pointer;
-}
-
-button{
-padding:12px 22px;
+input{
+width:90%;
+padding:12px;
+font-size:18px;
 border:none;
-border-radius:12px;
+border-radius:10px;
+margin:10px 0;
+}
+button{
+padding:12px 20px;
+font-size:18px;
 background:#ff0066;
 color:white;
-font-size:17px;
-cursor:pointer;
-margin:8px;
-}
-
-button:hover{
-background:#ff3385;
-transform:scale(1.03);
-}
-
-.container{
-margin:25px 15px;
-}
-
-.card{
-background:rgba(255,255,255,0.08);
-border:1px solid rgba(255,255,255,0.15);
-border-radius:20px;
-padding:25px;
-margin:20px auto;
-max-width:650px;
-box-shadow:0 10px 30px rgba(0,0,0,.25);
-}
-
-input,select{
-width:100%;
-padding:15px;
-margin:10px 0;
 border:none;
-border-radius:12px;
-background:#222;
-color:white;
-font-size:16px;
-outline:none;
+border-radius:10px;
+margin:10px;
+cursor:pointer;
 }
-
-input:focus,select:focus{
-box-shadow:0 0 10px #ff0066;
-}
-
 #result{
 margin-top:20px;
-padding:20px;
-background:#1d1d1d;
-border-radius:15px;
-line-height:1.8;
-word-break:break-word;
-text-align:left;
-min-height:80px;
+font-size:18px;
+line-height:32px;
+white-space:pre-wrap;
 }
-
-#sideMenu{
-height:100%;
-width:0;
-position:fixed;
-top:0;
-left:0;
-background:#1a1a1a;
-overflow-x:hidden;
-transition:0.4s;
-padding-top:60px;
-z-index:999;
-text-align:left;
-}
-
-#sideMenu a{
-display:block;
-padding:15px;
-color:white;
-text-decoration:none;
-}
-
-#sideMenu a:hover{
-background:#ff0066;
-}
-
-#closeMenu{
-position:absolute;
-top:15px;
-right:20px;
-font-size:35px !important;
-}
-
-footer{
-background:#1a1a1a;
-padding:25px;
-margin-top:40px;
-}
-
-/* LIGHT MODE */
-
-.light{
-background:#f5f5f5;
-color:#111;
-}
-
-.light header{
-background:#fff;
-color:#111;
-}
-
-.light .card{
-background:#fff;
-color:#111;
-}
-
-.light input,
-.light select{
-background:#fff;
-color:#111;
-}
-
-.light #result{
-background:#eee;
-color:#111;
-}
-
-.light footer{
-background:#fff;
-color:#111;
-}
-
-.light #sideMenu{
-background:#fff;
-}
-
-.light #sideMenu a{
-color:#111;
-}
-
-.light #sideMenu a:hover{
-background:#ff0066;
-color:#fff;
-}
-
 </style>
-
 </head>
 
 <body>
 
+<h2>🏷 Hashtag Generator</h2>
 
-<!-- HEADER -->
-
-<header>
-
-<span class="menuBtn" onclick="openMenu()">☰</span>
-
-<span>🏷️ Hashtag Generator</span>
-
-<button id="themeBtn" onclick="toggleTheme()">🌙</button>
-
-</header>
-
-
-<!-- SIDE MENU -->
-
-<div id="sideMenu">
-
-<a id="closeMenu"
-href="javascript:void(0)"
-onclick="closeMenu()">×</a>
-
-<a href="index.html">🏠 Home</a>
-
-<a href="about.html">👨‍💻 About Us</a>
-
-<a href="Caption.html">📝 Caption Generator</a>
-
-<a href="hashtag.html">🏷️ Hashtag Generator</a>
-
-<a href="bio.html">👤 Bio Generator</a>
-
-<a href="username.html">✨ Username Generator</a>
-
-<a href="font.html">🎨 Font Generator</a>
-
-<a href="besttime.html">⏰ Best Time to Post</a>
-
-<a href="color.html">🌈 Color Palette Generator</a>
-
-</div>
-
-
-<!-- MAIN -->
-
-<div class="container">
-
-<div class="card">
-
-<h1>🏷️ Hashtag Generator</h1>
-
-<p>
-Create hashtags for your Instagram Reels,
-Posts and Content.
-</p>
-
-<input
-type="text"
-id="topic"
-placeholder="Example: travel, love, fitness...">
-
-
-<select id="count">
-
-<option value="10">10 Hashtags</option>
-<option value="20">20 Hashtags</option>
-<option value="30">30 Hashtags</option>
-
-</select>
+<input id="topic" placeholder="Topic likho (Sad, Love, Nature, Motivation)">
 
 <br>
 
-<button onclick="generateHashtags()">
-✨ Generate Hashtags
-</button>
+<button onclick="generate()">Generate</button>
 
-<button onclick="copyHashtags()">
-📋 Copy
-</button>
+<div id="result"></div>
 
-<button onclick="shareHashtags()">
-📤 Share
-</button>
+<button onclick="copyText()">📋 Copy</button>
 
+<br>
 
-<div id="result">
-Your hashtags will appear here...
-</div>
-
-</div>
-
-</div>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-<h3>🚀 ReelCreator Tools</h3>
-
-<p>Made with ❤️ by Aditya Kashyap</p>
-
-<p>© 2026 All Rights Reserved</p>
-
-</footer>
-
+<button onclick="location.href='index.html'">⬅ Back Home</button>
 
 <script>
 
+function generate(){
 
-/* THEME */
-
-function toggleTheme(){
-
-document.body.classList.toggle("light");
-
-let btn=document.getElementById("themeBtn");
-
-if(document.body.classList.contains("light")){
-
-btn.innerHTML="🌞";
-
-}else{
-
-btn.innerHTML="🌙";
-
-}
-
-}
-
-
-/* MENU */
-
-function openMenu(){
-
-document.getElementById("sideMenu").style.width="280px";
-
-}
-
-
-function closeMenu(){
-
-document.getElementById("sideMenu").style.width="0";
-
-}
-
-
-/* HASHTAG GENERATOR */
-
-function generateHashtags(){
-
-let topic=document.getElementById("topic").value.trim();
-
-let count=parseInt(
-document.getElementById("count").value
-);
+let t=document.getElementById("topic").value
+.trim()
+.toLowerCase();
 
 let result=document.getElementById("result");
 
-if(topic===""){
-
-result.innerHTML=
-"⚠️ Please enter a topic first.";
-
+if(t===""){
+result.innerText="⚠️ Pehle topic likho.";
 return;
-
 }
 
+t=t.replace(/[^a-z0-9\s]/g,"").replace(/\s+/g,"");
 
-/* CLEAN TOPIC */
-
-topic=topic
-.toLowerCase()
-.replace(/[^a-zA-Z0-9\s]/g,"")
-.trim()
-.replace(/\s+/g,"");
-
-
-let extraWords=[
-"reels",
-"reelsinstagram",
-"instagramreels",
+let words=[
 "viral",
+"reels",
+"instagram",
 "trending",
 "explore",
 "explorepage",
-"instagood",
-"contentcreator",
-"creator",
-"reelitfeelit",
+"fyp",
+"foryou",
 "viralreels",
 "trendingreels",
+"reelitfeelit",
+"instareels",
+"reelsinstagram",
 "reelkarofeelkaro",
-"instagram",
-"socialmedia",
-"reel",
-"post",
-"photography",
-"video",
-"love",
-"life",
+"contentcreator",
+"creator",
+"creatorlife",
+"smallcreator",
+"indiancreator",
 "india",
 "indian",
-"daily",
+"instagood",
+"instadaily",
+"instagramreels",
+"viralvideo",
+"viralcontent",
+"trendingnow",
+"reelvideo",
+"reelcreator",
+"socialmedia",
+"contentcreation",
 "motivation",
-"fyp",
-"viralvideo"
+"inspiration",
+"success",
+"life",
+"quotes",
+"shayari",
+"love",
+"lovequotes",
+"beautiful",
+"photography",
+"photo",
+"video",
+"daily",
+"fun",
+"entertainment",
+"lifestyle",
+"fashion",
+"travel",
+"nature",
+"sunset",
+"rain",
+"music",
+"fitness",
+"gym",
+"gaming",
+"comedy",
+"funny",
+"memes",
+"status",
+"attitude",
+"smile",
+"happy",
+"friends",
+"family"
 ];
 
+/* Topic ke saath hashtags */
 
-let hashtags=[];
+let tags=[
+"#"+t,
+"#"+t+"reels",
+"#"+t+"instagram",
+"#"+t+"video",
+"#"+t+"viral",
+"#"+t+"trending",
+"#"+t+"creator",
+"#"+t+"india",
+"#"+t+"daily",
+"#"+t+"content"
+];
 
+/* Random hashtags add karo */
 
-/* MAIN HASHTAG */
+let shuffled=[...words].sort(()=>Math.random()-0.5);
 
-hashtags.push("#"+topic);
+for(let i=0;i<shuffled.length && tags.length<30;i++){
 
+let tag="#"+shuffled[i];
 
-/* TOPIC + WORDS */
-
-for(let i=0;i<extraWords.length;i++){
-
-if(hashtags.length>=count){
-break;
-}
-
-hashtags.push("#"+topic+extraWords[i]);
-
-}
-
-
-/* GENERAL HASHTAGS */
-
-for(let i=0;i<extraWords.length;i++){
-
-if(hashtags.length>=count){
-break;
-}
-
-let tag="#"+extraWords[i];
-
-if(!hashtags.includes(tag)){
-
-hashtags.push(tag);
-
+if(!tags.includes(tag)){
+tags.push(tag);
 }
 
 }
 
+/* Random 20 hashtags */
 
-/* SHOW RESULT */
+tags=tags
+.sort(()=>Math.random()-0.5)
+.slice(0,20);
 
-result.innerHTML=hashtags.join(" ");
+result.innerText=tags.join(" ");
 
 }
 
 
-/* COPY */
+/* COPY BUTTON */
 
-function copyHashtags(){
+function copyText(){
 
-let result=
-document.getElementById("result").innerText;
+let text=document.getElementById("result").innerText;
 
 if(
-result==="" ||
-result==="Your hashtags will appear here..."
+text==="" ||
+text==="Your hashtags will appear here..."
 ){
 
-alert("Pehle hashtags generate karo.");
+alert("⚠️ Pehle hashtags generate karo.");
 
 return;
-
 }
 
-navigator.clipboard.writeText(result);
+navigator.clipboard.writeText(text);
 
-alert("✅ Hashtags copied!");
-
-}
-
-
-/* SHARE */
-
-function shareHashtags(){
-
-let result=
-document.getElementById("result").innerText;
-
-if(
-result==="" ||
-result==="Your hashtags will appear here..."
-){
-
-alert("Pehle hashtags generate karo.");
-
-return;
-
-}
-
-if(navigator.share){
-
-navigator.share({
-
-title:"Instagram Hashtag Generator",
-
-text:result,
-
-url:window.location.href
-
-});
-
-}else{
-
-navigator.clipboard.writeText(result);
-
-alert("✅ Hashtags copied! Share option supported nahi hai.");
-
-}
+alert("✅ Hashtags Copied Successfully!");
 
 }
 
 </script>
-
 
 </body>
 </html>
