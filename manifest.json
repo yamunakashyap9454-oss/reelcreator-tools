@@ -1,0 +1,21 @@
+{
+  "name": "ReelCreator Tools",
+  "short_name": "ReelCreator",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#111111",
+  "theme_color": "#ff0066",
+  "orientation": "portrait",
+  "description": "Free Instagram creator tools for captions, hashtags, bios and more.",
+  "icons": [
+  {
+    "src": "./34520/icon-192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  },
+  {
+    "src": "./34520/icon-512.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }
+  ]
