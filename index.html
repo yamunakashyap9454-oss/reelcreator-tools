@@ -1,52 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ReelCreator Tools</title>
+
+<title>ReelCreator Tools - Free Instagram Creator Tools</title>
 
 <style>
+
+/* =========================
+   BASIC
+========================= */
+
+*{
+box-sizing:border-box;
+}
+
 body{
 margin:0;
 font-family:Arial,sans-serif;
 background:#111;
 color:#fff;
 text-align:center;
-}
-
-header{
-padding:25px;
-background:#1f1f1f;
-font-size:28px;
-font-weight:bold;
-}
-
-h2{
-margin-top:20px;
-}
-
-#search{
-width:90%;
-padding:12px;
-border:none;
-border-radius:10px;
-margin:15px;
-font-size:16px;
-}
-
-.card{
-background:#222;
-margin:15px;
-padding:20px;
-border-radius:15px;
-box-shadow:0 0 15px rgba(255,0,102,0.2);
 transition:0.3s;
 }
 
-.card:hover{
-transform:translateY(-5px);
-box-shadow:0 0 25px rgba(255,0,102,0.5);
+h2{
+margin-top:25px;
 }
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:20px 25px;
+background:#1f1f1f;
+font-size:22px;
+font-weight:bold;
+}
+
+.menuBtn{
+font-size:30px;
+cursor:pointer;
+}
+
+#themeBtn{
+padding:10px 15px;
+font-size:18px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+margin:20px;
+padding:50px 20px;
+border-radius:25px;
+background:linear-gradient(135deg,#7b2ff7,#ff0066);
+box-shadow:0 15px 35px rgba(0,0,0,.3);
+}
+
+.hero h1{
+font-size:38px;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:18px;
+line-height:1.6;
+margin-bottom:25px;
+}
+
+.hero button{
+padding:15px 35px;
+font-size:18px;
+font-weight:bold;
+border-radius:50px;
+}
+
+.features{
+margin-top:25px;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.features span{
+background:rgba(255,255,255,.15);
+padding:10px 18px;
+border-radius:30px;
+backdrop-filter:blur(10px);
+}
+
+
+/* =========================
+   SIDE MENU
+========================= */
+
+#sideMenu{
+height:100%;
+width:0;
+position:fixed;
+top:0;
+left:0;
+background:#1a1a1a;
+overflow-x:hidden;
+transition:0.4s;
+padding-top:60px;
+z-index:999;
+text-align:left;
+}
+
+#sideMenu a{
+display:block;
+padding:15px;
+color:white;
+text-decoration:none;
+font-size:16px;
+}
+
+#sideMenu a:hover{
+background:#ff0066;
+}
+
+#closeMenu{
+position:absolute;
+top:15px;
+right:20px;
+font-size:35px !important;
+}
+
+
+/* =========================
+   POPULAR TOOLS
+========================= */
+
+.popular{
+margin:30px 15px;
+}
+
+.popular-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+margin-top:20px;
+}
+
+.popular-box{
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.15);
+padding:20px;
+border-radius:18px;
+font-size:16px;
+font-weight:bold;
+transition:.3s;
+}
+
+.popular-box:hover{
+transform:translateY(-5px);
+border-color:#ff0066;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,0.15);
+margin:20px;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+transition:all .3s ease;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 40px rgba(123,47,247,.35);
+border-color:#ff0066;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
 
 button{
 padding:12px 25px;
@@ -63,8 +213,15 @@ button:hover{
 background:#ff3385;
 transform:scale(1.05);
 }
-input{
+
+
+/* =========================
+   SEARCH
+========================= */
+
+#search{
 width:90%;
+max-width:600px;
 padding:14px;
 font-size:16px;
 border:none;
@@ -75,40 +232,276 @@ outline:none;
 margin:15px 0;
 }
 
-input:focus{
+#search:focus{
 box-shadow:0 0 10px #ff0066;
 }
+
+
+/* =========================
+   TOP BUTTON
+========================= */
+
+#topBtn{
+display:none;
+position:fixed;
+bottom:20px;
+right:20px;
+z-index:99;
+border:none;
+background:#ff0066;
+color:white;
+padding:15px;
+border-radius:50%;
+font-size:20px;
+cursor:pointer;
+box-shadow:0 0 15px rgba(255,0,102,.5);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+background:#1a1a1a;
+padding:25px 20px;
+margin-top:30px;
+}
+
+
+/* =========================
+   LIGHT MODE
+========================= */
+
+.light{
+background:#f5f5f5;
+color:#111;
+}
+
+.light header{
+background:#fff;
+color:#111;
+}
+
+.light .card{
+background:#fff;
+color:#111;
+}
+
+.light .popular-box{
+background:#fff;
+color:#111;
+}
+
+.light #search{
+background:#fff;
+color:#111;
+}
+
+.light footer{
+background:#fff;
+color:#111;
+}
+
+.light #sideMenu{
+background:#fff;
+}
+
+.light #sideMenu a{
+color:#111;
+}
+
+.light #sideMenu a:hover{
+background:#ff0066;
+color:#fff;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+header{
+font-size:18px;
+padding:18px;
+}
+
+.hero{
+padding:40px 15px;
+}
+
+.hero h1{
+font-size:30px;
+}
+
+.hero p{
+font-size:16px;
+}
+
+.popular-grid{
+grid-template-columns:1fr 1fr;
+}
+
+.card{
+margin:15px;
+padding:20px;
+}
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
-<header style="display:flex;align-items:center;justify-content:space-between;padding:20px 25px;">
-<span style="font-size:30px;cursor:pointer;" onclick="openMenu()">☰</span>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+<span class="menuBtn" onclick="openMenu()">☰</span>
+
 <span>🚀 ReelCreator Tools</span>
-<span></span>
+
+<button id="themeBtn" onclick="toggleTheme()">🌙</button>
+
 </header>
-<div id="sideMenu" style="height:100%;width:0;position:fixed;top:0;left:0;background:#1a1a1a;overflow-x:hidden;transition:0.4s;padding-top:60px;z-index:999;">
 
-<a href="javascript:void(0)" onclick="closeMenu()" style="position:absolute;top:15px;right:20px;font-size:35px;color:white;text-decoration:none;">×</a>
 
-<a href="index.html" style="display:block;padding:15px;color:white;text-decoration:none;">🏠 Home</a>
+<!-- =========================
+     HERO
+========================= -->
 
-<a href="Caption.html" style="display:block;padding:15px;color:white;text-decoration:none;">📝 Caption Generator</a>
+<section class="hero">
 
-<a href="hashtag.html" style="display:block;padding:15px;color:white;text-decoration:none;">🏷️ Hashtag Generator</a>
+<h1>Grow Your Instagram Faster 🚀</h1>
 
-<a href="bio.html" style="display:block;padding:15px;color:white;text-decoration:none;">👤 Bio Generator</a>
-
-</div>
-<p id="toolCount" style="color:#bbb;font-size:16px;">
-Total Tools: 6
+<p>
+Everything you need to grow on Instagram —
+Captions, Hashtags, Bios, Usernames and more.
+100% Free.
 </p>
-<div style="background:#1a1a1a;margin:15px;padding:20px;border-radius:15px;">
-<h2>👋 Welcome to ReelCreator Tools</h2>
-<p>Create amazing Instagram captions, hashtags, bios and more — all for FREE.</p>
-<button onclick="shareSite()">📤 Share Website</button>
+
+<button onclick="location.href='Caption.html'">
+✨ Start Creating
+</button>
+
+<div class="features">
+
+<span>⚡ Fast</span>
+<span>💯 Free</span>
+<span>📱 Mobile Friendly</span>
+<span>🎨 Premium UI</span>
+
 </div>
+
+</section>
+
+
+<!-- =========================
+     SIDE MENU
+========================= -->
+
+<div id="sideMenu">
+
+<a id="closeMenu"
+href="javascript:void(0)"
+onclick="closeMenu()">×</a>
+
+<a href="index.html">🏠 Home</a>
+
+<a href="about.html">👨‍💻 About Us</a>
+
+<a href="Caption.html">📝 Caption Generator</a>
+
+<a href="hashtag.html">🏷️ Hashtag Generator</a>
+
+<a href="bio.html">👤 Bio Generator</a>
+
+<a href="username.html">✨ Username Generator</a>
+
+<a href="font.html">🎨 Font Generator</a>
+
+<a href="besttime.html">⏰ Best Time to Post</a>
+
+<a href="color.html">🌈 Color Palette Generator</a>
+
+</div>
+
+
+<!-- =========================
+     POPULAR TOOLS
+========================= -->
+
+<section class="popular">
+
+<h2>🔥 Most Popular Tools</h2>
+
+<div class="popular-grid">
+
+<div class="popular-box"
+onclick="location.href='Caption.html'">
+📝 Caption Generator
+</div>
+
+<div class="popular-box"
+onclick="location.href='hashtag.html'">
+🏷️ Hashtag Generator
+</div>
+
+<div class="popular-box"
+onclick="location.href='bio.html'">
+👤 Bio Generator
+</div>
+
+<div class="popular-box"
+onclick="location.href='font.html'">
+🎨 Font Generator
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     TOOL COUNT
+========================= -->
+
+<p id="toolCount" style="color:#888;">
+Total Tools: 7
+</p>
+
+
+<!-- =========================
+     WELCOME
+========================= -->
+
+<div class="card">
+
+<h2>👋 Welcome to ReelCreator Tools</h2>
+
+<p>
+Create amazing Instagram captions,
+hashtags, bios and more — all for FREE.
+</p>
+
+<button onclick="shareSite()">
+📤 Share Website
+</button>
+
+</div>
+
+
+<!-- =========================
+     SEARCH
+========================= -->
 
 <h2>Free Instagram Creator Tools</h2>
 
@@ -117,94 +510,271 @@ type="text"
 id="search"
 placeholder="🔍 Search Tools...">
 
+
+<!-- =========================
+     TOOLS
+========================= -->
+
 <div class="card">
+
 <h3>📝 Caption Generator</h3>
+
 <p>Create amazing captions for your reels.</p>
-<button onclick="location.href='Caption.html'">Open</button>
+
+<button onclick="location.href='Caption.html'">
+Open
+</button>
+
 </div>
 
+
 <div class="card">
+
 <h3>🏷️ Hashtag Generator</h3>
+
 <p>Get trending hashtags instantly.</p>
-<button onclick="location.href='hashtag.html'">Open</button>
+
+<button onclick="location.href='hashtag.html'">
+Open
+</button>
+
 </div>
 
+
 <div class="card">
+
 <h3>👤 Bio Generator</h3>
+
 <p>Create stylish Instagram bios.</p>
-<button onclick="location.href='bio.html'">Open</button>
+
+<button onclick="location.href='bio.html'">
+Open
+</button>
+
 </div>
 
+
 <div class="card">
-<h3>👤 Username Generator</h3>
+
+<h3>✨ Username Generator</h3>
+
 <p>Create stylish usernames instantly.</p>
-<button onclick="location.href='username.html'">Open</button>
+
+<button onclick="location.href='username.html'">
+Open
+</button>
+
 </div>
 
+
 <div class="card">
+
 <h3>🎨 Font Generator</h3>
+
 <p>Create stylish fonts.</p>
-<button onclick="location.href='font.html'">Open</button>
+
+<button onclick="location.href='font.html'">
+Open
+</button>
+
 </div>
 
+
 <div class="card">
+
 <h3>⏰ Best Time to Post</h3>
+
 <p>Find the best Instagram posting time.</p>
-<button onclick="location.href='besttime.html'">Open</button>
+
+<button onclick="location.href='besttime.html'">
+Open
+</button>
+
 </div>
 
+
 <div class="card">
-<h3>🎨 Color Palette Generator</h3>
+
+<h3>🌈 Color Palette Generator</h3>
+
 <p>Beautiful color combinations.</p>
-<button onclick="location.href='color.html'">Open</button>
+
+<button onclick="location.href='color.html'">
+Open
+</button>
+
 </div>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<h3>🚀 ReelCreator Tools</h3>
+
+<p>Made with ❤️ by Aditya Kashyap</p>
+
+<p>© 2026 All Rights Reserved</p>
+
+</footer>
+
+
+<!-- =========================
+     TOP BUTTON
+========================= -->
+
+<button id="topBtn" onclick="topFunction()">⬆</button>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
 <script>
-let search = document.getElementById("search");
 
-search.addEventListener("keyup", function () {
 
-let value = search.value.toLowerCase();
-let cards = document.getElementsByClassName("card");
+/* DARK / LIGHT MODE */
+
+function toggleTheme(){
+
+document.body.classList.toggle("light");
+
+let btn=document.getElementById("themeBtn");
+
+if(document.body.classList.contains("light")){
+
+btn.innerHTML="🌞";
+
+}else{
+
+btn.innerHTML="🌙";
+
+}
+
+}
+
+
+/* SEARCH */
+
+let search=document.getElementById("search");
+
+search.addEventListener("keyup",function(){
+
+let value=search.value.toLowerCase();
+
+let cards=document.getElementsByClassName("card");
 
 for(let i=0;i<cards.length;i++){
 
-let text = cards[i].innerText.toLowerCase();
+let text=cards[i].innerText.toLowerCase();
 
 if(text.includes(value)){
+
 cards[i].style.display="block";
+
 }else{
+
 cards[i].style.display="none";
+
 }
 
 }
 
 });
-function shareSite() {
-  if (navigator.share) {
-    navigator.share({
-      title: "ReelCreator Tools",
-      text: "Check out my free Instagram creator tools!",
-      url: window.location.href
-    });
-  } else {
-    alert("Sharing is not supported on this device.");
-  }
-}
-let totalTools = document.getElementsByClassName("card").length;
-document.getElementById("toolCount").innerText = "Total Tools: " + totalTools;
-function openMenu() {
-  document.getElementById("sideMenu").style.width = "250px";
+
+
+/* SHARE */
+
+function shareSite(){
+
+if(navigator.share){
+
+navigator.share({
+
+title:"ReelCreator Tools",
+
+text:"Check out my free Instagram creator tools!",
+
+url:window.location.href
+
+});
+
+}else{
+
+alert("Sharing is not supported on this device.");
+
 }
 
-function closeMenu() {
-  document.getElementById("sideMenu").style.width = "0";
 }
+
+
+/* TOOL COUNT */
+
+let totalTools=
+document.getElementsByClassName("card").length - 1;
+
+document.getElementById("toolCount").innerText=
+"Total Tools: "+totalTools;
+
+
+/* SIDE MENU */
+
+function openMenu(){
+
+document.getElementById("sideMenu").style.width="280px";
+
+}
+
+
+function closeMenu(){
+
+document.getElementById("sideMenu").style.width="0";
+
+}
+
+
+/* TOP BUTTON */
+
+window.onscroll=function(){
+
+scrollFunction();
+
+};
+
+
+function scrollFunction(){
+
+let btn=document.getElementById("topBtn");
+
+if(document.documentElement.scrollTop>200){
+
+btn.style.display="block";
+
+}else{
+
+btn.style.display="none";
+
+}
+
+}
+
+
+function topFunction(){
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+}
+
 </script>
-<footer style="background:#1a1a1a;padding:20px;margin-top:30px;">
-<h3>🚀 ReelCreator Tools</h3>
-<p>Made with ❤️ by Aditya Kashyap</p>
-<p>© 2026 All Rights Reserved</p>
-</footer>
+
+
 </body>
 </html>
