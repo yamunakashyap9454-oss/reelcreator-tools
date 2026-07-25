@@ -1,99 +1,242 @@
 <!DOCTYPE html>
-<html>
+<html lang="hi">
 <head>
-<title>Caption Generator</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Caption Generator - ReelCreator Tools</title>
+
 <style>
+*{
+box-sizing:border-box;
+}
+
 body{
+margin:0;
 background:#111;
 color:white;
-font-family:Arial;
+font-family:Arial,sans-serif;
 text-align:center;
 padding:20px;
 }
-input{
-width:90%;
-padding:12px;
-border-radius:10px;
-border:none;
-margin:10px 0;
-font-size:16px;
+
+.container{
+max-width:600px;
+margin:auto;
 }
+
+h1{
+font-size:32px;
+margin-top:20px;
+}
+
+.subtitle{
+color:#aaa;
+font-size:16px;
+margin-bottom:25px;
+}
+
+.card{
+background:#1c1c1c;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+input, select{
+width:100%;
+padding:14px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+font-size:16px;
+outline:none;
+background:#292929;
+color:white;
+}
+
 button{
 background:#ff0066;
 color:white;
-padding:12px 20px;
+padding:13px 22px;
 border:none;
 border-radius:10px;
-font-size:18px;
-margin:10px;
+font-size:17px;
+margin:8px;
+cursor:pointer;
 }
+
+button:hover{
+background:#ff3385;
+}
+
 #result{
 margin-top:20px;
-font-size:20px;
+padding:20px;
+background:#252525;
+border-radius:15px;
+font-size:19px;
+line-height:1.6;
+min-height:60px;
+white-space:pre-wrap;
+}
+
+.back{
+background:#333;
+}
+
+.loading{
+color:#ff6699;
+}
+
+@media(max-width:600px){
+h1{
+font-size:28px;
+}
+
+.card{
+padding:20px;
+}
 }
 </style>
 </head>
+
 <body>
 
-<h1>📝 Caption Generator</h1>
+<div class="container">
 
-<input id="topic" placeholder="Topic likho (Sad, Love, Nature...)">
+<h1>🤖 AI Caption Generator</h1>
 
-<button onclick="generate()">Generate</button>
+<p class="subtitle">
+Create unique Instagram captions with AI 🚀
+</p>
 
-<p id="result"></p>
+<div class="card">
 
-<button onclick="location.href='index.html'">⬅ Back Home</button>
-<button onclick="copyText()">📋 Copy</button>
+<input
+id="topic"
+type="text"
+placeholder="Topic likho... जैसे Sad, Love, Nature, Attitude">
+
+<select id="mood">
+<option value="sad">🥀 Sad</option>
+<option value="love">❤️ Love</option>
+<option value="attitude">😎 Attitude</option>
+<option value="nature">🌿 Nature</option>
+<option value="motivation">🔥 Motivation</option>
+<option value="aesthetic">✨ Aesthetic</option>
+</select>
+
+<button onclick="generateAI()">
+🤖 Generate AI Caption
+</button>
+
+<div id="result">
+AI caption yahan dikhega...
+</div>
+
+<button onclick="copyText()">
+📋 Copy
+</button>
+
+<button class="back" onclick="location.href='index.html'">
+⬅ Back Home
+</button>
+
+</div>
+
+</div>
+
 
 <script>
-function generate(){
-let t=document.getElementById("topic").value.toLowerCase();
-let text="✨ Stay real, stay you.";
 
-if(t=="sad"){
+async function generateAI(){
 
-let sad = [
-"🥀 Kuch dard lafzon se zyada khamoshi bayan karti hai.",
-"💔 Muskurahat ke peeche bhi dard hota hai.",
-"🌙 Raat sabse zyada uski yaad dilati hai.",
-"😔 Har kahani ka happy ending nahi hota.",
-"🖤 Dil tootne ki awaaz sirf mehsoos hoti hai."
-];
+let topic=document.getElementById("topic").value.trim();
+let mood=document.getElementById("mood").value;
+let result=document.getElementById("result");
 
-text = sad[Math.floor(Math.random()*sad.length)];
-
-}
-else if(t=="love"){
-
-let love = [
-"❤️ Mohabbat wahi hai jo har din aur gehri ho.",
-"🥰 Tera saath meri duniya hai.",
-"💕 Ishq lafzon se nahi, ehsaason se hota hai.",
-"💖 Tu ho to har din khoobsurat lagta hai.",
-"😍 Dil sirf tujhe hi chahta hai."
-];
-
-text = love[Math.floor(Math.random()*love.length)];
-
-}
-else if(t=="nature"){
-text="🌿 Nature kabhi jaldi nahi karti, phir bhi sab kuch ho jata hai.";
+if(topic===""){
+alert("Pehle topic likho bhai ❤️");
+return;
 }
 
-document.getElementById("result").innerHTML=text;
-}
-</script>function copyText() {
-    let text = document.getElementById("result").innerText;
+result.innerText="🤖 AI caption bana raha hai...";
 
-    if (text == "") {
-        alert("Pehle Generate karo!");
-        return;
-    }
+try{
 
-    navigator.clipboard.writeText(text);
-    alert("✅ Copied Successfully!");
+/*
+  Yahan baad me Cloudflare Worker ka URL lagega.
+  Example:
+  https://reelcreator-ai.YOUR-NAME.workers.dev
+*/
+
+let response=await fetch("YOUR_CLOUDFLARE_WORKER_URL",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+topic:topic,
+mood:mood
+
+})
+
+});
+
+if(!response.ok){
+throw new Error("AI request failed");
 }
+
+let data=await response.json();
+
+result.innerText=data.caption || "Caption nahi bana.";
+
+}
+
+catch(error){
+
+console.error(error);
+
+result.innerText=
+"⚠️ AI service abhi connect nahi hai.\n\nCloudflare Worker connect karne ke baad AI captions generate honge.";
+
+}
+
+}
+
+
+function copyText(){
+
+let text=document.getElementById("result").innerText;
+
+if(
+text==="" ||
+text==="AI caption yahan dikhega..."
+){
+alert("Pehle caption generate karo!");
+return;
+}
+
+navigator.clipboard.writeText(text)
+.then(function(){
+
+alert("✅ Caption copied!");
+
+})
+.catch(function(){
+
+alert("❌ Copy nahi ho paya.");
+
+});
+
+}
+
+</script>
 
 </body>
 </html>
