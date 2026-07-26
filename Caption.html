@@ -1,100 +1,3 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Caption Generator - ReelCreator Tools</title>
-
-<style>
-*{box-sizing:border-box;}
-body{
-margin:0;
-background:#111;
-color:#fff;
-font-family:Arial,sans-serif;
-text-align:center;
-padding:20px;
-}
-.container{
-max-width:600px;
-margin:auto;
-}
-.card{
-background:#1c1c1c;
-padding:25px;
-border-radius:20px;
-}
-input,select{
-width:100%;
-padding:14px;
-margin:10px 0;
-border:none;
-border-radius:10px;
-background:#292929;
-color:#fff;
-font-size:16px;
-}
-button{
-background:#ff0066;
-color:#fff;
-border:none;
-padding:14px;
-border-radius:10px;
-cursor:pointer;
-margin-top:10px;
-width:100%;
-font-size:17px;
-}
-#result{
-margin-top:20px;
-padding:20px;
-background:#222;
-border-radius:15px;
-white-space:pre-wrap;
-min-height:80px;
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-<h1>🤖 AI Caption Generator</h1>
-
-<div class="card">
-
-<input id="topic" placeholder="Topic likho...">
-
-<select id="mood">
-<option value="sad">🥀 Sad</option>
-<option value="love">❤️ Love</option>
-<option value="attitude">😎 Attitude</option>
-<option value="nature">🌿 Nature</option>
-<option value="motivation">🔥 Motivation</option>
-<option value="aesthetic">✨ Aesthetic</option>
-</select>
-
-<button onclick="generateAI()">
-🤖 Generate AI Caption
-</button>
-
-<div id="result">
-AI caption yahan dikhega...
-</div>
-
-<button onclick="copyText()">📋 Copy</button>
-
-<button onclick="location.href='index.html'">
-⬅ Back Home
-</button>
-
-</div>
-
-</div>
-
-<script>
-
 async function generateAI(){
 
 const topic=document.getElementById("topic").value.trim();
@@ -102,11 +5,11 @@ const mood=document.getElementById("mood").value;
 const result=document.getElementById("result");
 
 if(!topic){
-alert("Topic likho.");
+alert("Pehle topic likho ❤️");
 return;
 }
 
-result.innerHTML="⏳ AI Caption bana raha hai...";
+result.innerHTML="🤖 AI Caption bana raha hai...";
 
 try{
 
@@ -116,34 +19,24 @@ headers:{
 "Content-Type":"application/json"
 },
 body:JSON.stringify({
-topic,
-mood
+topic:topic,
+mood:mood
 })
 });
 
 const data=await response.json();
 
-result.innerHTML=data.caption || "❌ Caption nahi mila.";
+result.innerHTML =
+data.captions ||
+data.caption ||
+"❌ Caption nahi mila.";
 
-}catch(e){
+}catch(error){
+
+console.error(error);
 
 result.innerHTML="❌ AI Server Error.";
 
 }
 
 }
-
-function copyText(){
-
-navigator.clipboard.writeText(
-document.getElementById("result").innerText
-);
-
-alert("✅ Caption Copied");
-
-}
-
-</script>
-
-</body>
-</html>
